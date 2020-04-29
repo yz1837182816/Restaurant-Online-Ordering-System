@@ -12,6 +12,8 @@
         <module>eurekademo</module>
         <module>myconfig</module>
         <module>order</module>
+        <module>menu</module>
+        <module>client</module>
     </modules>
 
     <parent>

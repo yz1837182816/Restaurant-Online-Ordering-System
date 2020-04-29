@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yz.mapper.MenuMapper">
+    <sql id="all">
+        id,name,price,flavor,tid
+    </sql>
+
+    <resultMap id="menuMap" type="Menu">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="price" property="price"></result>
+        <result column="flavor" property="flavor"></result>
+        <association property="type" select="com.yz.mapper.TypeMapper.getById" column="tid"></association>
+    </resultMap>
+
+    <select id="listAll" resultMap="menuMap">
+        SELECT <include refid="all"/> FROM t_menu LIMIT #{index},#{limit}
+    </select>
+
+    <select id="getCount" resultType="int">
+        SELECT COUNT(id) FROM t_menu
+    </select>
+
+    <select id="getMenuById" resultType="Menu">
+        SELECT <include refid="all"/> FROM t_menu WHERE id = #{id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO t_menu(name,price,flavor) VALUES(#{name},#{price},#{flavor})
+    </insert>
+
+    <update id="update">
+        UPDATE t_menu SET name = #{name},price = #{price},flavor = #{flavor} WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM t_menu WHERE id = #{id}
+    </delete>
+</mapper>
