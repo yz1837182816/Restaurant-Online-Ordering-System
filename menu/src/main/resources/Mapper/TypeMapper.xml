@@ -11,4 +11,8 @@
     <select id="getById" parameterType="long" resultType="Type">
         SELECT <include refid="all"></include> FROM t_type WHERE id = #{id}
     </select>
+
+    <select id="listAll" resultType="Type">
+        SELECT <include refid="all"></include> FROM t_type
+    </select>
 </mapper>

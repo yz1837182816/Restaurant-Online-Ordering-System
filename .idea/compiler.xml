@@ -7,22 +7,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="user" />
+        <module name="menu" />
         <module name="myconfig" />
+        <module name="order" />
+        <module name="account" />
         <module name="eurekademo" />
         <module name="client" />
-        <module name="order" />
-        <module name="menu" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="account" options="-parameters" />
       <module name="client" options="-parameters" />
       <module name="eurekademo" options="-parameters" />
       <module name="menu" options="-parameters" />
       <module name="mycloud3" options="-parameters" />
       <module name="myconfig" options="-parameters" />
       <module name="order" options="-parameters" />
+      <module name="user" options="-parameters" />
     </option>
   </component>
 </project>
