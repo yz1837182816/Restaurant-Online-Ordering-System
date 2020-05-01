@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yz.mapper.OrderMapper">
+
+    <resultMap id="orderMap" type="Order">
+        <id column="id" property="id"></id>
+        <result column="date" property="date"></result>
+        <result column="state" property="state"></result>
+        <association property="menu" select="com.yz.mapper.MenuMapper.getMenuById" column="mid"></association>
+        <association property="user" select="com.yz.mapper.UserMapper.getUserById" column="uid"></association>
+    </resultMap>
+
+    <insert id="insert" parameterType="Order">
+        INSERT INTO t_order(uid,mid,date,state) VALUES(#{user.id},#{menu.id},#{date},0)
+    </insert>
+
+    <select id="listAllByUid" resultMap="orderMap">
+        SELECT id,mid,date,state FROM t_order WHERE uid = #{uid} LIMIT #{index},#{limit}
+    </select>
+
+    <select id="getCountByUid" resultType="int">
+        SELECT count(id) FROM t_order WHERE uid = #{uid}
+    </select>
+
+    <select id="listAllByState" resultMap="orderMap">
+        SELECT id,mid,uid,date,state FROM t_order WHERE state = 0 LIMIT #{index},#{limit}
+    </select>
+
+    <update id="updateState" parameterType="long">
+        UPDATE t_order SET state = 1 WHERE id = #{id}
+    </update>
+
+    <select id="getCountByState" resultType="int">
+        SELECT count(id) FROM t_order WHERE state = 0
+    </select>
+
+</mapper>

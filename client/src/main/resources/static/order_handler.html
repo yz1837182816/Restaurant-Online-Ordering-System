@@ -20,7 +20,7 @@
 
             table.render({
                 elem: '#test'
-                ,url:'/order/findAllByState'
+                ,url:'/order/listAllByState'
                 ,title: '订单列表'
                 ,cols: [
                     [
@@ -62,7 +62,7 @@
             table.on('tool(test)', function(obj){
                 var data = obj.data;
                 if(obj.event === 'send'){
-                    window.location.href="/order/updateState/"+data.id+"/1";
+                    window.location.href="/order/update/"+data.id;
                 }
             });
         });

@@ -7,3 +7,5 @@ spring:
     config:
       uri: http://localhost:8762
       fail-fast: true
+  main:
+    allow-bean-definition-overriding: true

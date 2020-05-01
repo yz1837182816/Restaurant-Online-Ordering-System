@@ -34,13 +34,15 @@ public class AccountHandler {
             switch (type){
                 case "user":
                     User user = new User();
-                    Long id = Long.parseLong(String.valueOf(map.get("id")));
-                    String nickname = String.valueOf(map.get("nickname"));
+                    user.setId(Long.parseLong(String.valueOf(map.get("id"))));
+                    user.setNickname(String.valueOf(map.get("nickname")));
                     session.setAttribute("user",user);
                     result = "redirect:/account/redirect/index";
                     break;
                 case "admin":
-                    Admin admin = (Admin) o;
+                    Admin admin = new Admin();
+                    admin.setId(Long.parseLong(String.valueOf(map.get("id"))));
+                    admin.setUsername(String.valueOf(map.get("username")));
                     session.setAttribute("admin",admin);
                     result = "redirect:/account/redirect/main";
                     break;

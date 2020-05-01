@@ -21,7 +21,7 @@
 
             table.render({
                 elem: '#test'
-                ,url:'/menu/findAll'
+                ,url:'/menu/listAll'
                 ,title: '菜单列表'
                 ,cols: [
                     [
@@ -44,11 +44,11 @@
                 var data = obj.data;
                 if(obj.event === 'del'){
                     layer.confirm('确定要删除吗？', function(index){
-                        window.location.href="/menu/deleteById/"+data.id;
+                        window.location.href="/menu/deleteMenuById/"+data.id;
                         layer.close(index);
                     });
                 } else if(obj.event === 'edit'){
-                    window.location.href="/menu/findById/"+data.id;
+                    window.location.href="/menu/updateMenuById/"+data.id;
                 }
             });
         });
